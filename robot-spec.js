@@ -37,43 +37,31 @@ describe('Robot', function() {
         expect(string).to.equal('1,3,NORTH');
     });
 
-    
+    it('should pass example A', function() {
+        var RobotA = new RobotClass;
+        RobotA.PLACE(0,0,'NORTH');
+        RobotA.MOVE();
+        var string = RobotA.REPORT();
+        expect(string).to.equal('0,1,NORTH');
+    });
 
-        
+    it('should pass example B', function() {
+        var RobotB = new RobotClass;
+        RobotB.PLACE(0,0,'NORTH');
+        RobotB.LEFT();
+        var string = RobotB.REPORT();
+        expect(string).to.equal('0,0,WEST');
+    });
+
+    it('should pass example C', function() {
+        var RobotC = new RobotClass;
+        RobotC.PLACE(1,2,'EAST');
+        RobotC.MOVE();
+        RobotC.MOVE();
+        RobotC.LEFT();
+        RobotC.MOVE();
+        var string = RobotC.REPORT();
+        expect(string).to.equal('3,3,NORTH');
+    });    
     
 });
-
-/*
-### Example a
-
-    PLACE 0,0,NORTH
-    MOVE
-    REPORT
-
-Expected output:
-
-    0,1,NORTH
-
-### Example b
-
-    PLACE 0,0,NORTH
-    LEFT
-    REPORT
-
-Expected output:
-
-    0,0,WEST
-
-### Example c
-
-    PLACE 1,2,EAST
-    MOVE
-    MOVE
-    LEFT
-    MOVE
-    REPORT
-
-Expected output
-
-    3,3,NORTH
-*/
