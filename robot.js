@@ -1,14 +1,17 @@
 function Robot() {
+    //X & Y coordinates and direction the robot is facing (F)
     this.X = 0;
     this.Y = 0;
     this.F = '';
 
+    //show coordinates and direction
     this.REPORT = function(){
         return this.X + ',' + this.Y + ',' + this.F;
     };
 
+    //place a robot on the board
     this.PLACE = function(x,y,f) {
-        //make sure input is valid
+        //make sure input is valid - x & y between 0 & 4, f must be valid string
         if(x >= 0 && x <= 4) {
             if(y >= 0 && y <= 4) {
                 if(f == 'NORTH' || f == 'SOUTH' || f == 'EAST' || f == 'WEST') {
@@ -20,6 +23,7 @@ function Robot() {
         }    
     };
 
+    //turn robot 90 degrees to the left
     this.LEFT = function(){
         switch(this.F){
             case 'NORTH':
@@ -37,6 +41,7 @@ function Robot() {
         }
     };
 
+    //turn robot 90 degrees to the right
     this.RIGHT = function(){
         switch(this.F){
             case 'NORTH':
@@ -54,6 +59,7 @@ function Robot() {
         }
     };
 
+    //move the robot forward 1 place
     this.MOVE = function(){
         switch(this.F){
             case 'NORTH':

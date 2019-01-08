@@ -5,12 +5,15 @@ describe('Robot', function() {
     var RobotFile = require('./robot.js');
     var RobotClass = RobotFile.Robot;
 
+    //make sure the file is being read
     it('should read the file', function() {
         expect(RobotFile).to.not.be.undefined;
     });
 
+    //make a new robot
     var Robot1 = new RobotClass;
 
+    //make sure robots initial values are ok
     it('should initialise a new robot', function() {
         expect(Robot1.X).to.equal(0);
         expect(Robot1.Y).to.equal(0);
@@ -19,6 +22,7 @@ describe('Robot', function() {
         expect(string).to.equal('0,0,');
     });
 
+    //ignore invalid data
     it('should not place a robot with invalid input', function() {
         Robot1.PLACE(1,3,'HELLO');
         var string = Robot1.REPORT();
@@ -31,10 +35,21 @@ describe('Robot', function() {
         expect(string).to.equal('0,0,');
     });
 
+    //check place command
     it('should place a robot in position', function() {
         Robot1.PLACE(1,3,'NORTH');
         var string = Robot1.REPORT();
         expect(string).to.equal('1,3,NORTH');
+    });
+
+    //ignore commands unless robot is placed in a valid position
+    it('should place a robot in position', function() {
+        var Robot2 = new RobotClass;
+        Robot2.LEFT();
+        Robot2.RIGHT();
+        Robot2.MOVE();
+        var string = Robot2.REPORT();
+        expect(string).to.equal('0,0,');
     });
 
     it('should pass example A', function() {
