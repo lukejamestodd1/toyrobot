@@ -2,7 +2,7 @@ SETUP
 
 git clone https://github.com/lukejamestodd1/toyrobot.git
 
-cd toy-robot
+cd toyrobot
 
 npm install mocha -g
 
